@@ -1,0 +1,129 @@
+body{background: #efefef;font-family: "Microsoft YaHei"; font-weight: bolder;margin: 0;}
+*{margin: 0;padding: 0;}
+ul,ol,dl,dt,dd{list-style: none;/*列表自带的样式都去掉*/}
+a{text-decoration: none;/*链接自带样式都去掉*/}
+hr{height: 0;border: none;border-top: 1px solid #dedede;}
+.clearfix::after{ content: '';display: block;clear: both;/*清除浮动*/}
+
+.topNavBar{padding: 22px 0; font-weight: bolder;position: fixed;/*固定定位*/top: 0;left: 0;
+  width: 100%;/*固定定位默认所有东西都往里缩，所以要设置宽度100%，但是此时的bug是它的宽度会超过body*/
+transition: all 0.6s;color: #c9c8c9;}
+.topNavBarInner{padding: 0 16px;}
+.topNavBar.nian{background: white;padding:5px 0;z-index: 1;box-shadow: 0 0 30px rgba(0,0,0,0.6);color:#3d4451;}/*这里同时拥有topNavBar和nian两个样式*/
+.topNavBar .logo{font-size: 27px;padding-top: 3px;padding-bottom: 4px;}
+.topNavBar .logo .rs{color: #e86767;margin-right: 8px;}
+.topNavBar .logo .card{color: #9a9da2;} 
+.topNavBar nav{padding-top: 11px;padding-bottom: 11px;}
+.topNavBar nav>ul{list-style: none; margin: 0;padding: 0;}
+.topNavBar nav>ul>li{float: left;margin-left: 19px;margin-right: 19px;position: relative;}
+.topNavBar nav>ul>li>a{font-size: 13px;color: inherit;/*继承颜色*/text-decoration: none;font-weight: bold;
+  border-top: 3px solid transparent;border-bottom: 3px solid transparent;/*加上下边框，先让颜色透明*/padding-bottom: 5px;position:relative;}
+.topNavBar nav > ul > li.active > a::after,
+.topNavBar nav > ul > li.highlight > a::after{/*相当于在hover后面加个div*/
+  content: '';display: block;width:100%;height:3px;background: #DC6465;position:absolute;
+  top:100%;left:0;animation: navSlide 0.3s;}/*移进去才会有active样式，有active才会有a::after*/
+@keyframes navSlide{0%{width:0;}100%{width:100%;} }
+.topNavBar .submenu{
+  display: none;
+  position: absolute;/*这里得让‘作品123’脱离文档流，否则它加进去的时候会把上面‘作品’右边的空隙撑起来，所以让它绝对定位*/
+  top:134%;
+  right:0;
+  background: white;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,0.15); 
+  color:#A2A4A7;
+  font-size: 15px;  
+}
+.topNavBar li.active> .submenu{
+  display: block;
+  animation: submenuSlide 0.5s;
+  cursor:pointer;    
+}/*submenu只有在有active时才显示*/
+@keyframes submenuSlide{
+  0%{margin-right:100%;}100%{margin-right:0%;}
+}
+.topNavBar .submenu > li{
+  white-space: nowrap;/*禁止li内的内容换行*/
+  padding:5px;
+}
+[data-x].offset{
+  transform: translateY(100px);
+}
+[data-x]{
+  transform: translateY(0);
+  transition: all 1.5s; 
+}
+.banner{height: 515px;/*给图片设置高度*/background-image:url(./img/rs-cover.jpg);
+  background-position: center center;/*使图片水平垂直方向居中放置*/background-size: cover;/*使图片完全盖住*/
+  /* position: relative; */}
+body > main{margin-top: -345px;/*这里不能用绝对定位，否则不同尺寸屏幕左右无法居中*/}
+.banner .mask{height: 515px;background:rgba(36,40,50,0.7);}
+.userCard{max-width: 940px; /*可以自适应宽度*/background: #ffffff;margin-left: auto;/*配合下面使居中*/margin-right: auto; 
+  box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.32);}
+.userCard .pictureAndText{/*不写在userCard上的原因，userCard设置的width是内容的宽度，加了padding后总宽度就超940px了*/
+  padding-top: 57px;padding-left: 50px;margin-bottom: 35px;}
+.userCard .picture{float: left;margin-right: 63px;}  
+.userCard .text{float: left;width: 475px;}  
+.userCard .welcome{background: #e86767;display: inline-block;/*行内元素无法设置padding*/color: white;
+  font-size: 12px;padding: 0 15px;line-height: 30px;position: relative;/*作为triangle的参照物*/margin-bottom: 30px;}
+.userCard .welcome .triangle{display: block;/*默认是span，所以要改成block*/border: 8px solid transparent; width:0px;border-left-color:#e86767;
+  border-top-width:0px;position: absolute;/*相对welcome绝对定位*/top: 100%;left: 7px;}
+.userCard .text h1{margin-bottom: 4px;color: #2A2D33;font-size: 34px;font-weight: 900;}
+.userCard .text p{color: #3d4451;font-size: 15px; }    
+.userCard .text hr{margin: 27px 0 15px 0;}
+.userCard .text dt,
+.userCard .text dd{float: left;padding:12px 0;font-size: 15px;}    
+.userCard .text dt{width: 30%;color: #3F3D3D;font-weight: bolder;}
+.userCard .text dd{width: 70%;color: #9da0a7;}
+.userCard footer {background: #e86767;text-align: center;}
+.userCard footer a{display: inline-block;border-radius: 50%;padding: 6px;margin: 16px;}
+.userCard footer a:hover{background: #d15d5d;} 
+.userCard footer svg{width:26px;height: 26px;
+  fill:white;/*svg的颜色表示方法*/vertical-align: top;/*使圆的空隙上下匀称*/}
+
+body > main .downloadResume{color: #464d59;text-align: center;display: block;margin-top: 65px;margin-bottom: 65px;}
+body > main > a .xiazai{border: 1px solid #cbcdcf;padding: 18px 85px;font-size: 18px;border-radius: 3px;/*边框四个角都是圆角*/
+  transition: box-shadow 0.5s;/*变到有阴影需要0.3s，这样平滑一些，这句也可加到hover上*/}
+body > main > a .xiazai:hover{box-shadow: 0px 5px 12px 0px rgba(0,0,0,0.47);/*鼠标触碰时有阴影*/ }  
+body > main > p{font-size: 20px;color:rgba(0,0,0,0.7);font-weight: normal;text-align: center;}
+
+section.skills,
+section.portfolio{width: 940px;margin-left: auto;margin-right: auto;margin-top:87px;margin-bottom:100px;}
+section.skills h2{font-size: 32px;color:rgba(0,0,0,0.7);text-align: center;margin-bottom: 32px;}
+section.skills ol{background: white;box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.32);padding:42px 50px 16px;}
+section.skills ol li{float: left; width:48%;/*不能设置margin-right,否则最右边边距就不是50px了*/
+      box-sizing: border-box;/*为了使宽度确定，需变成border-box*/}
+section.skills ol li:nth-child(even){  /*利用伪类，选择偶数位列表项*/ float: right; /*让偶数列的右浮，右边边距就不变*/}  
+section.skills ol li h3{color: #3d4451;font-size: 14px;font-weight: normal;} 
+section.skills ol .progressBar{height: 5px;background: #fbe0e0;margin: 8px 0 34px;border-radius: 3px;overflow: hidden;}
+section.skills.offset .progress{
+  transform: translateX(-100%);
+}
+section.skills ol .progressBar .progress{height: 100%;/*一定不要忘了写height,否则不会显示，它继承父元素的高度*/
+  background: #e86767; border-radius: 3px; transition: all 2s; }/*把transform: translateX(0)去掉就可以变化了*/
+
+section.portfolio{text-align: center;margin-bottom: 100px;/*为了美观，最后可以删掉*/}
+body > .portfolio h2{font-size: 32px;color:rgba(0,0,0,0.7);text-align: center;margin-bottom: 30px;}
+body > .portfolio>nav{text-align: center;/*不能直接对ul设置center,要对ul外面的包裹曾设置center*/
+  display: inline-block;vertical-align: top;}
+body > .portfolio>nav>ul{display: inline-block;/*为了让元素往里缩，需设置成inline-block,写了这句话一定要带上下面那句*/
+  vertical-align: top;/*一定和上一句搭配使用*/} 
+body > .portfolio li{float: left;margin-right:50px;color:rgba(0,0,0,0.7);font-size: 14px;cursor: pointer;/*让鼠标变成手的形状*/}
+body > .portfolio>nav>ul>li:last-child{margin-right: 0px;}
+
+.portfolio > nav .bar{border-radius: 3px;height:5px;background:white;margin-top:15px;}
+.portfolio > nav .bar > .innerbar{height:100%;background:#e86767;border-radius: 3px;transition: all 0.5s;/*控制状态之间的切换过渡*/}
+.portfolio > nav .bar.stage1 > .innerbar{margin-left: 0;width:33px;}
+.portfolio > nav .bar.stage2 > .innerbar{margin-left: 76px;width:42px;}
+.portfolio > nav .bar.stage3 > .innerbar{margin-left: 157px;width:90px;}
+.portfolio .works{position: relative;/*不用浮动是因为每张图片需要动来动去，用绝对定位后面方便协同JS调整图片位置*/
+  height: 627px;/*要设置高度，否则它会塌陷,无法设置margin*/}
+.portfolio .works .big{position: absolute; /*绝对定位会让文本脱离文档流*/top:30px;left: 0px;}
+.portfolio .works .small1{position: absolute;top:30px;left: 635px;}
+.portfolio .works .small2{position: absolute;top:342px;left: 635px;}
+  
+  
+  
+    
+  
+  
+  
