@@ -103,23 +103,15 @@ section.skills ol .progressBar .progress{height: 100%;/*一定不要忘了写hei
 
 section.portfolio{text-align: center;margin-bottom: 100px;/*为了美观，最后可以删掉*/}
 body > .portfolio h2{font-size: 32px;color:rgba(0,0,0,0.7);text-align: center;margin-bottom: 30px;}
-body > .portfolio>nav{text-align: center;/*不能直接对ul设置center,要对ul外面的包裹曾设置center*/
-  display: inline-block;vertical-align: top;}
-body > .portfolio>nav>ul{display: inline-block;/*为了让元素往里缩，需设置成inline-block,写了这句话一定要带上下面那句*/
-  vertical-align: top;/*一定和上一句搭配使用*/} 
-body > .portfolio li{float: left;margin-right:50px;color:rgba(0,0,0,0.7);font-size: 14px;cursor: pointer;/*让鼠标变成手的形状*/}
-body > .portfolio>nav>ul>li:last-child{margin-right: 0px;}
+.portfolio .swiper-button-prev,
+.portfolio .swiper-button-next{
+ background-color: white;
+ opacity: 0.8;
+ width:55px;
+ height:55px;
+border-radius: 50%;
+}
 
-.portfolio > nav .bar{border-radius: 3px;height:5px;background:white;margin-top:15px;}
-.portfolio > nav .bar > .innerbar{height:100%;background:#e86767;border-radius: 3px;transition: all 0.5s;/*控制状态之间的切换过渡*/}
-.portfolio > nav .bar.stage1 > .innerbar{margin-left: 0;width:33px;}
-.portfolio > nav .bar.stage2 > .innerbar{margin-left: 76px;width:42px;}
-.portfolio > nav .bar.stage3 > .innerbar{margin-left: 157px;width:90px;}
-.portfolio .works{position: relative;/*不用浮动是因为每张图片需要动来动去，用绝对定位后面方便协同JS调整图片位置*/
-  height: 627px;/*要设置高度，否则它会塌陷,无法设置margin*/}
-.portfolio .works .big{position: absolute; /*绝对定位会让文本脱离文档流*/top:30px;left: 0px;}
-.portfolio .works .small1{position: absolute;top:30px;left: 635px;}
-.portfolio .works .small2{position: absolute;top:342px;left: 635px;}
   
   
   
